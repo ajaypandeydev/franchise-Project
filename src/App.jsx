@@ -1,10 +1,9 @@
 import React from 'react'
+import MainRoute from './router/MainRoute'
 
 function App() {
   return (
-    <div>
-      <h1>React App</h1>
-    </div>
+    <MainRoute />
   )
 }
 
