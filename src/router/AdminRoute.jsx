@@ -1,9 +1,24 @@
-import React from 'react'
+// src/routes/AdminRoute.jsx
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import AdminLogin from '../pages/admin/AdminLogin';
+import AdminDashboard from '../pages/admin/AdminDashboard';
+import ProtectedRoute from './ProtectedRoute';
 
 function AdminRoute() {
   return (
-    <div>AdminRoute</div>
-  )
+    <Routes>
+      <Route path='/admin-login' element={<AdminLogin />} />
+      <Route
+        path='/admin-dashboard'
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
 }
 
-export default AdminRoute
+export default AdminRoute;
