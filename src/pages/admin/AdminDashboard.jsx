@@ -1,18 +1,22 @@
-// src/pages/admin/AdminDashboard.jsx
-import React from "react";
+import { createTheme, ThemeProvider } from "@mui/material";
+import AdminNavbar from '../../components/admin/AdminNavbar'
+import { useMemo, useState } from "react";
+import { getDesignTokens } from "../../theme/Theme";
 
 const AdminDashboard = () => {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    window.location.href = "/admin-login";
+  const [mode, setMode ] = useState('light');
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode])
+
+  function toggleColorMode(){
+    setMode(prev => (prev === 'light' ? 'dark' : 'light'))
   };
 
   return (
-    <div style={{ padding: 50 }}>
-      <h1>Admin Dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+    <ThemeProvider theme={theme}>
+      <AdminNavbar toggleColorMode={toggleColorMode}/>
+    </ThemeProvider>
+    </>
   );
 };
 

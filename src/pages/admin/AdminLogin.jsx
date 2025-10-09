@@ -96,6 +96,7 @@ const AdminLogin = () => {
           ADMIN LOGIN
         </Typography>
 
+      <form style={{width: '100%'}} onSubmit={handleLogin}>
         <Box
           sx={{
             width: "100%",
@@ -161,11 +162,12 @@ const AdminLogin = () => {
               "&:hover": { textDecoration: "underline" },
             }}
           >
-            Forgot Password?
+            Reset Password?
           </Typography>
         </Box>
 
         <Button
+          type="submit"
           variant="contained"
           fullWidth
           sx={{
@@ -179,10 +181,11 @@ const AdminLogin = () => {
               backgroundColor: "rgba(255,255,255,0.3)",
             },
           }}
-          onClick={handleLogin}
         >
           LOGIN
         </Button>
+      </form>
+
       </Box>
     </Box>
   );
